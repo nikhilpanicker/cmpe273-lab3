@@ -20,10 +20,12 @@ public class Client {
 				1, serverNode);
 		for (int count = 1, letterCount = 97; count <= 10 && letterCount <= 106; count++, letterCount++) {
 			String serverURL = ch.get(count);
-			CacheServiceInterface cache = new DistributedCacheService(serverURL);
-			System.out.println(serverURL);
-			cache.put(count, String.valueOf((char) letterCount));
-			System.out.println("get(" + count + ") => " + cache.get(count));
+                        CacheServiceInterface cache = new DistributedCacheService(serverURL);
+                        System.out.println("PUT ==> node "+serverURL);
+	                System.out.println("put ==>("+count+","+String.valueOf((char) letterCount)+")");
+	                cache.put(count, String.valueOf((char) letterCount));
+	                System.out.println("GET ==> node "+serverURL);
+	                System.out.println("get(" + count + ") => " + cache.get(count));
 		}
 		System.out.println("Existing Cache Client...");
 		
